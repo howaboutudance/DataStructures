@@ -1,0 +1,80 @@
+6 (7) easy exercizes.
+Data Structures
+Michelle Bergin
+
+1, 2, 3 and 6, 4, 5, 7
+
+1)
+	Below is the print out from my minMaxAverage.cpp file after compiled:
+
+	Enter first integer: 3
+	Enter second integer: 4
+	Enter last integer: 3
+	The average is: 3.33
+	The smallest is: 3
+	The largest is: 4
+
+2) 
+	Below is the printout from my TestIntCell.cpp file which uses the TestInt.cpp and TestInt.h after compilation:
+	
+	Cell contents: 5 and 8
+	Cells added: 13
+	New Cat cell :3 : 12
+	Added 53 to cat : 65
+	Minused 53 to cat : 12
+	Adding 2 IntCells together: 13
+
+3 and 6)
+	First I set an array of IntCells with the values (0 - 5) And I set an IntCell array of pointers.
+
+	Then through a pointer to the reference of an array I set each pointer to each IntCell in an array.
+	Then I print out what's in the array by derefrencing the pointer:
+		0  
+		1
+		2
+		3
+		4
+		5
+
+	Then to test I did this right (I did this wrong SO MANY TIMES ...) I updated one original IntCell with 82828. Then I printed it out using a dereferenced pointer.
+		82828
+
+	Then I used a derferenced pointer to change the space of another IntCell and printed it using the original array:
+		2843
+
+	Then I printed out an array spot using a friend:
+		1	
+
+4) 
+	Below is an example of how a shallow copy affects your program. If I change the value to my pointer cell then the original cell gets changed too! Oh noes!
+
+	Setting arr1[0] = 42
+	Read arr1[0]: 42
+	Now lets change only arr2[0] = 43 
+	Read arr1[0]: 43		
+
+5) I didn't understand what 5 was asking for and I was sick so I stayed home Friday :/
+
+7)
+	Setting m1 and m2
+	m1: 4 , m2: 6
+
+	having m1 = m2
+	m1 = m2
+
+	Now printing out the result
+	m1: 6 , m2: 6
+	
+	Does m1 == m2?
+	m1 == m2 // yes it does!
+
+	I made them different again. m1: 6 m2: 3
+
+	Does m1 now not equal m2?
+	m1 != m2 // yes it doesn't...?!
+
+	Is m2 less than m1?
+	m2 < m1 // why yes it is!
+
+	Could I please print using << overload and a friend?
+	6 

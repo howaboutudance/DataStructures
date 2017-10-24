@@ -1,0 +1,70 @@
+Michelle Bergin
+Data Structures
+HW1
+
+1.4, 1.5, 1.7, 1.8(a, b, c), 1.12, [1.15]
+
+1.4) Write a program that reads in a file and outputs the file as modified by the inlcude statements.
+
+As of writing this I was succesfully able to open 3 files, read 2, find a certain phrase and print both to terminal. I was able to succesfully print the #include I made to it's called location in the other file! What I was not able to do was write to a file. I am currently trying this.
+
+Side note, the more programming I do, the more documentation pages I read, the easier it is to read them and the more of them I can read. May seem small but to me is a big deal. I used to abhor reading those because I was constantly reminded of how miniscule my learning is. But I feel a little more confident now... just a little.
+
+1.5) Write a recursive function that returns the number of 1 in the binary representation of N. 
+	
+	EXAMPLES
+
+Enter an integer: 
+4
+There are 1 binary 1's
+------------------
+Enter an integer: 
+456
+There are 4 binary 1's
+------------------
+
+1.7) Prove the following formulas:
+	a) logX < X for all X > 0
+		1) Base condition: log1 < 1 (log1 = 0)
+	b)  Blog(A)	= log(A^B)
+		let A = X^r so log(base-x)(A) = r
+				= log(base-x)((X^r)^B)
+				[log(base-x)(X^r) = r
+				= rB
+				= log(base-x)(A)*B
+				= Blog(A)
+
+1.8) 
+	a)
+	b)
+	c)
+
+1.12) 	n
+	a)	∑  (2i - 1) = n² 
+	   i=1
+		base case)
+		i = 1 (2∙1 - 1) = 1²
+					  1 = 1
+
+	   n+1
+		∑ (2i - 1) = 
+	   i=1
+
+	    n
+	   (∑ [2i - 1]) + 2(n + 1) - 1 =
+	   i=1
+
+		n² + 2n + 1 = 
+		
+		(n + 1)²
+
+
+	b)	
+		
+
+[1.15]) write a main that creates an array of rectangles and finds the largest rectangle. First in area then in perimeter.
+
+	I did it! below is some of my print out: 
+
+	1812 is the biggest perimeter
+	19448 is the biggest area

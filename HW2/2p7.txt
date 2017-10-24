@@ -1,0 +1,26 @@
+1)	2e-06 time it took to run n = 10
+    1e-06 time it took to run n = 100
+    4e-06 time it took to run n = 1000
+    2.6e-05 time it took to run n = 10000
+
+2)  3e-06 time it took to run n = 10
+    2.8e-05 time it took to run n = 100
+    0.002596 time it took to run n = 1000
+    0.196822 time it took to run n = 10000
+    
+3)  4e-06 time it took to run n = 10
+    0.002282 time it took to run n = 100
+    2.33024 time it took to run n = 1000
+    took too long and I grew impatient n = 10000
+
+4)  3e-06 time it took to run n = 10
+    0.001382 time it took to run n = 1000
+    0.103854 time it took to run n = 10000
+
+5)  2.6e-05 time it took to run n = 10
+    1.89166 time it took to run n = 100
+    took too long I grew impatient n = 1000
+
+6)  6e-06 time it took to run n = 10
+    0.026602 time it took to run n = 100
+    240.716 time it took to run n = 1000

@@ -1,0 +1,22 @@
+Michelle Bergin
+Datastructures
+HW3
+
+3.1,3.2, 3.4, 3.5,3.6, 3.9, 3.10, 3.11, 3.22, 3.23, 3.29
+
+3.1)
+	Runtime was 0.000127 seconds
+	Filename: pLots.cc
+	Also it prints whatever the first Link list specifies, but if those aren't in order, it still works.
+
+3.2)
+	help
+
+3.4)
+	Filename: intersect.cc
+	
+3.5)
+	Filename: union.cc
+
+3.6)
+	
