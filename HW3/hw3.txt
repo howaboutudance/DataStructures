@@ -19,4 +19,24 @@ HW3
 	Filename: union.cc
 
 3.6)
+	Filename: josephus.cc
+	Also I have been trying to make my own josephus with a class player. It's been fun but as of writing this, my logic is wrong and it is not working :( sadface
+
+3.9)
+	Vector can be resized. Because of this, every time it needs more space, it doubles the size that it needs. To do this it makes a new vector! Which may or may not be in the previous location. 
+
+3.10)
+	
+
+3.11)
+	
+
+3.22)
+	
+
+3.23)
+	
+
+3.29)
+	
 	
