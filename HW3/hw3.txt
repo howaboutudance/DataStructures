@@ -10,7 +10,30 @@ HW3
 	Also it prints whatever the first Link list specifies, but if those aren't in order, it still works.
 
 3.2)
-	help
+	Swap two adjacent elements by adjusting only the links (and not the data) using
+	a) Singly linked list
+		bool swap(Link &prev){
+			if(current->next == nullptr)
+				return false;
+			prev->next = current->next;
+			current->next->next = current->next;
+			prev->next->next = current;
+			return true;
+		}
+
+	b) Doubly linked list
+		// Assumes always swap forward
+		bool swap(Link&rhs){
+			if(current->next == nullptr)
+				return false;
+			Node *temp = current->next->next;
+			current->next->next->prev = current;
+			current->prev->next = current->next;
+			current->next->next = current;
+			current->next->prev = current->prev;
+			current->prev = current->next;
+			current->next = temp;
+		}
 
 3.4)
 	Filename: intersect.cc
@@ -26,17 +49,84 @@ HW3
 	Vector can be resized. Because of this, every time it needs more space, it doubles the size that it needs. To do this it makes a new vector! Which may or may not be in the previous location. 
 
 3.10)
-	
+	class iterator{
+		public:
+			iterator()
+				{}
+			Object & operator*(){
+			}
+			iterator & operator++(){
+			}
+			
+	};
 
 3.11)
-	
+	a)
+		int size(){
+			int count;
+			Node *p = head;
+			while(p->next != null){
+				count++;
+				p = p->next;
+			}
+			return count;
+		}
+
+	b)
+		print(){
+			Node *p = head;
+			while(p->next != null){
+				cout << "p->data" << endl;
+			}
+		}
+
+	c)
+		bool isIn(Object &o){
+			Node *p = head;
+			while(p->next != null){
+				if(o == p->data)
+					return true;
+			}
+			return false;
+		}
+
+	d)
+		bool(Object &o){
+			if(!isIn(o)){
+				push_front(o);
+				return true;
+			}
+			return false;
+		}
+
+	e)
+		bool(Object &o){
+			Node *p = head;
+			while(p->next == !null){
+				if(p->data == o){
+					
+					return true;
+				}
+			}
+			return false;
+		}
 
 3.22)
-	
+	evalPost.cc
 
 3.23)
 	
 
 3.29)
-	
+
+		p = head;
+		int iCounter = theSize - 1;
+		for(int j = 0; j < theSize; j++){
+			for(int i = iCounter; i >= 0; i--){
+				if(i = 0){
+					cout << p->data << " ";
+					iCounter--;
+				}
+			}
+		}
 	
