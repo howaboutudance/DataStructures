@@ -119,14 +119,18 @@ HW3
 
 3.29)
 
-		p = head;
+		Node *p = head;
 		int iCounter = theSize - 1;
 		for(int j = 0; j < theSize; j++){
+			p = head;
 			for(int i = iCounter; i >= 0; i--){
 				if(i = 0){
 					cout << p->data << " ";
 					iCounter--;
+					continue;
 				}
+				p = p->next;				
 			}
 		}
+		cout << endl;
 	
