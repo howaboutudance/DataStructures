@@ -1,0 +1,33 @@
+/*
+ * Michelle Bergin
+ * DataStructures
+ * Q 4
+ *
+ * Assume that you want to use a circular array implementation in an implementation of Queue, 
+ * as described in Section 3.7.2. Give a definition of the representation, 
+ * and the enqueue and dequeue operation. What is the advantage of this implementation?
+ */
+
+
+You would need to keep track of where you where in the queue (location number) 
+You would need to keep bounds checking to ensure that you could wrap around. 
+if count == size
+	count = 0
+Something like that
+You need to keep track of a front and back as well. The user of this queue could have implemented it sorted
+and you would want to make sure that the order was not disturbed by wrapping.
+The Tail would point to the head and the head to the tail (doubly linked list)
+
+Enqueue
+	If you added a new element, you would need to keep track of the queue size. 
+	IF the enqueue was at the head or tail you would need to update those as well
+Dequeue
+	if you removed an element you would also want to keep track of the queue size and 
+	if the head or tail were altered you would need to update those connections and representations.
+
+The advantage is not stopping. What if you needed to have something run in a round, like for a video
+game. Like a list of items that you can cycle through. It would be a lot faster to have that List
+as a double linked list so that you can move forward back and around without starting to iterate
+from the beginning.
+
+Sorry If I am off on all this :/!
