@@ -12,27 +12,31 @@
 
 Queue<object> & merge(Queue<Object> &rhs){
 	Queue<object> n;
+	
 	/*
-	 * If both whiles have a total of N elements the total big O could at worst case be 2N
+	 * Changes: I changed the silly double while loop into one while with an if statement.
 	 */
+
 	while(!this.isEmpty()){ 
 		n.enqueue(this.dequeue());
-		while(!rhs->isEmpty()){
+		if(!rhs->isEmpty()){
 			n.enqueue(rhs->dequeue());
-			continue;
 		}
 	}
+
 	if(!this.isEmpty()){ // This has the potential of being N and so does the one below it
 		while(!this.isEmpty()){
 			n.enqueue(this.dequeue());
 		}
 	}
+
 	if(!rhs->isEmpty()){
 		while(!rhs->isEmpty()){
 			n.enqueue(rhs->dequeue());
 		}
 	}
-	return &n;
+
+	return n;
 }
 
 // 2N + N + N = 4N so BIG O(N)  i think

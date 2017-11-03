@@ -47,7 +47,15 @@ int main(){
 	int r;
 	int l;
 
-	for(string::iterator it = userInput.begin(); it != userInput.end(); ++it){
+	for(int i = 0; i < userInput.size(); i++){
+		if(userInput[i] != ' '){
+			if((int)userInput[i] > 47 && (int)userInput[i] < 58){
+				post.push((int)userInput[i]);
+			}
+		}
+	}
+
+	/* for(string::iterator it = userInput.begin(); it != userInput.end(); ++it){
 		if(*it == ' ')
 			continue;
 		if((int)*it > 47 && (int)*it < 58){
@@ -64,5 +72,7 @@ int main(){
 			cout << "test" << endl;
 		}
 	}
+	*/
+
 	return 0;
 }

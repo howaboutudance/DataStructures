@@ -112,10 +112,10 @@ HW3
 		}
 
 3.22)
-	evalPost.cc
+	evalPost.cc - not done. More than likely by the time you read this I will have posted an update.
 
 3.23)
-	
+	inToPo.cc - not done. More than likely etc. etc.
 
 3.29)
 
