@@ -133,7 +133,14 @@ HW3
 		}
 
 3.22)
-	evalPost.cc - not done. More than likely by the time you read this I will have posted an update.
+	evalP.cc
+	Works:
+
+	1 2 + 3 * 6 + 2 3 + / is the postfix expression
+	3 is the answer
+
+	9 5 3 + 2 4 ^ - + is the postfix expression
+	1 is the answer
 
 3.23)
 	inToPo.cc - not done. More than likely etc. etc.
