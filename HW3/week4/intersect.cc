@@ -30,24 +30,10 @@ int main(){
 			b.push_back(i);
 	}
 	b.push_back(44);
-	
-	cout << "Below is our 'a' list before" << endl;
-	for(List<int>::const_iterator it = a.begin(); it != a.end(); it++){
-		cout << *it << ", ";
-	}
-	cout << "\n" << endl;
-	cout << "Below is our 'b' list before" << endl;
-	for(List<int>::const_iterator it = b.begin(); it != b.end(); it++){
-		cout << *it << ", ";
-	}
-	cout << "\n" << endl;
 
 	c = intersection(a,b);
-	cout << "Below is our 'c' unioned list" << endl;
 	for(List<int>::const_iterator it = c.begin(); it != c.end(); it++){
-		cout << *it << ", ";
+		cout << *it << endl;
 	}
-	cout << "\n" << endl;
-
 	return 0;
 }

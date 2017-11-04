@@ -10,7 +10,7 @@
 using namespace std;
 
 // Assuming there are no duplicates.
-const List<int> unionator(const List<int> &L, const List<int> &R){
+const List<int> intersection(const List<int> &L, const List<int> &R){
 	List<int> N;
 	bool duplicate = false;
 	for(List<int>::const_iterator it = L.begin(); it != L.end(); it++){
@@ -46,10 +46,8 @@ int main(){
 			b.push_back(i);
 	}
 	b.push_back(44);
-	
 
-
-	c = unionator(a,b);
+	c = intersection(a,b);
 	for(List<int>::const_iterator it = c.begin(); it != c.end(); it++){
 		cout << *it << endl;
 	}
