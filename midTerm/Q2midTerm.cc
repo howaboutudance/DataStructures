@@ -50,25 +50,33 @@ class myStack{
 		List<Object> *mS;
 };
 
-int main(){
-	myStack<char> poop;
-	string meow = "(arf)((meow)cat)";
-	char temp;
-	for(int i = meow.size() - 1; i >= 0;i--){
-		if(meow[i] == '('){
-			cout << meow[i];
-			temp = poop.top();
-			while(temp != ')'){
-				cout << temp;
-				poop.pop();
-				temp = poop.top();
-			}
-			cout << temp;
-			poop.pop();
+void parenMatch(string &s){
+	myStack<char> stck;
+
+	for(char c : s){
+		if(c == '('){
+			stck.push(c);
 		} else {
-			poop.push(meow[i]);
+			while(!stck.isEmpty()){
+				cout << stck.top();
+				stck.pop();
+			}
+			cout << c;
 		}
 	}
 	cout << endl;
+}
+
+int main(){
+	myStack<char> p;
+	string meow = "()(())";
+	string crazyMeow = "(()((()()))(())())";
+
+	cout << meow << " is the parens" << endl;
+	parenMatch(meow);
+
+	cout << "\n" << crazyMeow << " is the crazy parens" << endl;
+	parenMatch(crazyMeow);
+
 	return 0;
 }
