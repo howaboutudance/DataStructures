@@ -1,0 +1,36 @@
+Michelle Bergin
+DataStructures
+HW4
+
+Set 4: 4.1, 4.2, 4.7, 4.9, 4.11
+
+4.1) 
+	a) A is the root
+	b) G, H, I, L, M, K are the leaves
+
+4.2)
+	a & b)
+		Children | Parent
+		G&H			D
+		D&E			B
+		L&M			J
+		I&J			E
+		B&C			A
+		F			C
+		K			F
+
+	c) Siblings
+		G, H
+		I, J
+		D, E
+		B, C
+		L, M
+
+	d) depth: 5
+	e) height: 5
+
+4.7)
+	wat...
+
+4.9)
+	
