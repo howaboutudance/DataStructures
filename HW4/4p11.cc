@@ -1,32 +1,9 @@
-#ifndef Btree_H
-#define Btree_H
-
 #include <iostream>
-#include <set>
-
+#include "Btree.h"
 using namespace std;
 
-template <typename Object>
-
-class Btree{
-	public:
-		Btree(){
-			root = 
-		}
-
-		~Btree(){
-		}
-
-		bool add(){
-			node *temp = 
-		}
-	private:
-		node *root;
-
-		struct node{
-  			Object data;
-  			struct node *left;
-  			struct node *right;
-		};
-};
-#endif
+int main(){
+	Btree<int> butts;
+	butts.add(1);
+	return 0;
+}
