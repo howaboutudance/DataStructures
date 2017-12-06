@@ -1,9 +1,7 @@
 #include <iostream>
 #include "Btree.h"
-using namespace std;
+#include <set>
 
 int main(){
-	Btree<int> butts;
-	butts.add(1);
 	return 0;
 }

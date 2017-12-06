@@ -1,0 +1,74 @@
+Michelle Bergin Final Questions 3, 4, 5
+
+3)
+const List<object> zip(const List<Object> &a, const List<Object> &b){
+	List<Object> myNewList;
+	int outerC = 0;
+	for(List<Object>::const_iterator it = a.begin(); it != a.end(); ++it){
+		int innerC = 0;
+		for(List<Object>::const_iterator it2 = b.begin(); it2 != b.end(); ++it2){
+			if(outerC == innerC){
+				Pair thePair(*it,*it2);
+				myNewList.push_back(thePair);
+			}
+			innerC++;
+		}
+		outerC++;
+	}
+	return myNewList;
+}
+// :(
+
+const List<object> unzip(const List<object> pairedList){
+	List<List> myTwoLists;
+	List<Object> a;
+	List<Object> b;
+	for(List<object>::const_iterator it = pairedList.begin(); it != pairedList.end(); ++it){
+		a.push_back(*it[0]);
+		b.push_back(*it[1]);
+	}
+	myTwoLists.push_back(a);
+	myTwoLists.push_back(b);
+	return myTwoLists;
+}
+
+
+4)
+
+bool operator== (const BTree &rhs) const {
+	return isEqual(this->root, rhs.root);
+}
+
+... :/ I am at a lost on how recursion can work with a boolean. So this will be wrong but here is my thought process. Work through the tree and append false or true to each recursive return. If there is ever a false then the final function will return false otherwise true.
+
+bool isEqual(node &rootLeft, node &rootRight){
+	if(rootLeft || rootRight == nullptr)
+		return true;
+	else {
+		if(rootLeft->data == rootRight.data){
+			return isEqual(rootLeft->left, rootRight.left);
+			return isEqual(rootLeft->right, rootRight.right);
+		}
+		else
+			return false;
+	}
+}
+
+
+5) 
+
+int heightDiff(const BTree bubbles){
+	return heightDiff(bubbles->root);
+}
+
+oi vei.. :/ I need to practice more recursion. I honestly wish I took the CSF when I was younger to use Haskel or however that is spelled! 
+
+int heightDiff(node bubbleR){
+	if(bubbleR == nullptr)
+		return;
+	else {
+		return heightDiff(bubbleR->left) + 1;
+		return heightDiff(bubbleR->right) - 1;
+	}
+}
+I don't know what I am doing... Sorry :(
