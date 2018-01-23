@@ -1,70 +1,206 @@
-Michelle Bergin
+HW1 Winter 
 Data Structures
-HW1
+Michelle Bergin
 
-1.4, 1.5, 1.7, 1.8(a, b, c), 1.12, [1.15]
+4.19 Show the result of inserting 2, 1, 4, 5, 9, 3, 6, 7 into an initially empty AVL tree.
 
-1.4) Write a program that reads in a file and outputs the file as modified by the inlcude statements.
+                                     2
+                                  /     \
+                                1         4
+                                             \
+                                               5
 
-As of writing this I was succesfully able to open 3 files, read 2, find a certain phrase and print both to terminal. I was able to succesfully print the #include I made to it's called location in the other file! What I was not able to do was write to a file. I am currently trying this.
-
-Side note, the more programming I do, the more documentation pages I read, the easier it is to read them and the more of them I can read. May seem small but to me is a big deal. I used to abhor reading those because I was constantly reminded of how miniscule my learning is. But I feel a little more confident now... just a little.
-
-1.5) Write a recursive function that returns the number of 1 in the binary representation of N. 
-	
-	EXAMPLES
-
-Enter an integer: 
-4
-There are 1 binary 1's
-------------------
-Enter an integer: 
-456
-There are 4 binary 1's
-------------------
-
-1.7) Prove the following formulas:
-	a) logX < X for all X > 0
-		1) Base condition: log1 < 1 (log1 = 0)
-	b)  Blog(A)	= log(A^B)
-		let A = X^r so log(base-x)(A) = r
-				= log(base-x)((X^r)^B)
-				[log(base-x)(X^r) = r
-				= rB
-				= log(base-x)(A)*B
-				= Blog(A)
-
-1.8) 
-	a)
-	b)
-	c)
-
-1.12) 	n
-	a)	∑  (2i - 1) = n² 
-	   i=1
-		base case)
-		i = 1 (2∙1 - 1) = 1²
-					  1 = 1
-
-	   n+1
-		∑ (2i - 1) = 
-	   i=1
-
-	    n
-	   (∑ [2i - 1]) + 2(n + 1) - 1 =
-	   i=1
-
-		n² + 2n + 1 = 
-		
-		(n + 1)²
+                                     2
+                                  /     \
+                                1         5
+                                        /   \
+                                       4     9
 
 
-	b)	
-		
+                                     4
+                                  /     \
+                                2         5
+                              /   \         \
+                            1       3         9
 
-[1.15]) write a main that creates an array of rectangles and finds the largest rectangle. First in area then in perimeter.
 
-	I did it! below is some of my print out: 
+                                     4
+                                  /     \
+                                2         6
+                              /   \     /   \
+                            1      3   5     9
 
-	1812 is the biggest perimeter
-	19448 is the biggest area
+
+                                     4
+                                  /     \
+                                2         6
+                              /   \     /   \
+                            1      3   5     9
+                                            /
+                                           7
+
+4.26 Write the functions to perform the double rotation without the inefficiency of doing two single rotations.
+
+I'm confused how to do this because I assume you need to know your previous root. How do you pass that along? I KNOW you talked about it but it has not registered yet to me.
+
+struct Node *rightRotate(struct Node *y){
+    struct Node *x = y->left;
+    struct Node *t = x->right;
+    
+    x->right = y;
+    y->left = t;
+
+    return x;
+}
+
+struct Node *leftRotate(struct Node *y){
+    struct Node *x = y->right;
+    struct Node *t = x->left;
+
+    x->left = y;
+    y->right = t;
+
+    return x;
+}
+
+4.27 Show the result of accessing the keys 3, 9, 1, 5 in order in the splay tree in Figure 4.76.
+
+                                     10
+                                   /    \
+                                 4        11
+                               /   \         \
+                             2       6         12
+                           /  \     /  \          \
+                         1     3   5     8          13
+                                       /   \
+                                     7       9
+
+
+Search for '3'                       10
+Step one                           /    \
+                                 3        11
+                               /   \         \
+                             2       4         12
+                           /           \          \ 
+                         1               6          13
+                                       /   \
+                                      5     8
+                                          /   \
+                                        7       9
+
+Search for '3'                        3
+Step two                            /   \
+                                  4       10
+                                /   \       \
+                              2      6        11
+                            /      /   \        \
+                          1      5       8        12
+                                       /   \        \
+                                     7       9        13
+
+Search for '9'                        3
+Step one                            /   \
+                                  4       10
+                                /   \       \
+                              2      6        11
+                            /      /   \        \
+                          1      5       9        12
+                                       /            \
+                                     8                13
+                                   /
+                                 7
+ 
+Search for '9'                        3
+Step two                            /   \
+                                  4       10 
+                                /   \       \
+                              2      9        11
+                            /      /           \
+                          1      6               12
+                               /   \               \
+                             5       8              13
+                                   /
+                                 7
+
+Search for '9'                        3
+Step three                          /   \
+                                  9       10
+                                /           \
+                              4               11
+                            /   \               \
+                          2      6               12
+                        /      /   \               \
+                      1      5      8               13
+                                   /
+                                  7
+
+Search for '9'                        9
+step four                           /   \
+                                  3       10
+                                   \        \
+                                    4        11
+                                  /   \        \
+                                2      6        12
+                              /      /   \        \
+                            1      5      8        13
+                                         /
+                                       7
+Before I continue, let's see that this is done right.. :/
+
+4.31 Write efficient functions that take only a pointer to the root of a binary tree, T, and compute 
+a. the number of nodes in T 
+b. the number of leaves in T 
+c. the number of full nodes in T 
+What is the running time of your routines?
+
++=====+
+|  a  |
++=====+
+
+int numOfNodes(){
+	return numOfNodes(T->root);
+}
+int numOfNodes(Node &rtNode){
+	if (rtNode == null){
+		return;
+	}
+	else{
+		return numOfNodes(rtNode->left) + 1;
+		return numOfNodes(rtNode->right) + 1;
+	}
+}
+
++=====+
+|  b  |
++=====+
+
+int numOfLeaves(){
+	return numOfLeaves(T->root);
+}
+int numOfLeaves(Node &rtNode){
+	if (rtNode == null){
+		return 1;
+	}
+	else{
+		numOfLeaves(rtNode->left);
+		numOfLeaves(rtNode->right);
+	}
+}
+
++=====+
+|  c  |
++=====+
+
+
+
+
+4.43 
+Show how the tree in Figure 4.77 is represented using a child/sibling link implementation.
+
+Each Node has a link to it's parent. They each have their data. They each have a linked list or Array of children. That way each child can be accessed via the array and each child can find it's parent. For example A and M each have 3 children. 
+
+
+4.45
+Two binary trees are similar if they are both empty or both nonempty and have similar left and right subtrees. Write a function to decide whether two binary trees are similar. What is the running time of your function?
+
+ 
