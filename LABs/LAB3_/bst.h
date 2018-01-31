@@ -68,6 +68,10 @@ class bst{
 		int fullNodes(){
 			return fullNodes(root);
 		}
+		//Set set_union(Set & vals)
+		//Set set_inter(Set & vals)
+		//bool subset(Set & vals) const
+		//bool operator==(Set & vals)
 	private:
 		void insert(const Obj &x, bstNode *&n){
 			if(n == NULL){

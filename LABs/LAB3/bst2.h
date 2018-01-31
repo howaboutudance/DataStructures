@@ -18,17 +18,35 @@ class bst{
 	private:
 		struct bstNode{
 			Obj data;
-			bstNode *left;
+			bstNode *left;	
 			bstNode *right;
 			bstNode(const Obj &d, bstNode *l, bstNode *r)
 			         : data(d), left(l), right(r) { }
 		};
 		bstNode *root;
-
 	public:
 		bst(){
 			root = NULL;
 		}
+		
+		class const_iterator{
+			public:
+				const_iterator(){
+				}
+				const Obj & operator*() const{
+					return iter.front();
+				}
+				const_iterator & operator++(){
+					iter.pop_front();
+					return *this;
+				}
+				bool operator== (const const_iterator &rhs) const{
+					return iter.empty();
+				}
+				private:
+					list<Obj> iter = inOrder();
+		};
+
 		bool isEmpty(){
 			return root == NULL;
 		}

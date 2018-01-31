@@ -123,6 +123,13 @@ class bst{
 				return 0;
 			return 1 + max(height(n->left), height(n->right));
 		}
+		const Obj * iterator(){
+			list<Obj> l;
+			l = inOrder();
+
+		}
+
+		//============================//
 		int numNodes(){
 			return numNodes(root);
 		}
