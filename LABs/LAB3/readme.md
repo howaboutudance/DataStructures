@@ -1,4 +1,6 @@
 LAB3
 =====
 
-Included is most of LAB3. If you open this then that means I haven't finished adding the iterator yet. I just want to submit things to feel like I am making progress. I appreciate your patience
+The make file is only for the test.cc and and bst.h
+
+I didn't make a makefile for the bst2.h and itera.cc I am still trying to make the iterator... I apologize.
