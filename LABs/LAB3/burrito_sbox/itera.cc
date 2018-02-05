@@ -17,10 +17,11 @@ int main(){
 	b.insert(8);
 	b.insert(7);
 	b.insert(16);
-	list<int> *l = b.inOrder();;
-	prnt(*l);
-	for(bst<int>::const_iterator it = b.begin(); it != b.end(); ++it){
-		cout << *it << endl;
+	list<int> l;
+	l = b.inOrder();
+	prnt(l);
+	for(bst<int>::const_iterator it = b.begin(); it != b.end(); it++){
+		cout << "Hi" << endl;
 	}
 	return 0;
 }
