@@ -128,11 +128,11 @@ class bst{
 			} else 
 				return search(x, root);
 		}
-		bstNode * findMin() const{
+		Obj & findMin() const{
 			assert (!isEmpty());
 			return findMin(root);
 		}
-		bstNode * findMax() const{
+		Obj & findMax() const{
 			assert (!isEmpty());
 		return findMax(root);
 		}
@@ -188,18 +188,18 @@ class bst{
 			}
 			return elements;
 		}
-		bstNode * findMin(bstNode *n){
+		Obj & findMin(bstNode *n){
 			if(n->left == NULL){
 				return n;
 			} else {
-				return findMin(n->left);
+				return findMin(n->left->data);
 			}
 		}
-		bstNode * findMax(bstNode *n){
+		Obj & findMax(bstNode *n){
 			if(n->right == NULL){
 				return n;
 			} else {
-				return findMax(n->right);
+				return findMax(n->right->data);
 			}
 		}
 		void remove(const Obj &x, bstNode *&n){
@@ -210,7 +210,7 @@ class bst{
 			} else if(x > n->data){
 				remove(x, n->right);
 			} else if(n->left != NULL && n->right != NULL){
-				n->data = findMin(n->right)->data;
+				n->data = findMin(n->right);
 				remove(n->data, n->right);
 			} else {
 				n = (n->left != NULL) ? n->left : n->right;

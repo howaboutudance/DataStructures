@@ -17,8 +17,14 @@ int main(){
 	b.insert(8);
 	b.insert(7);
 	b.insert(16);
+	cout << "Added 32, 8, 7, 16" << endl;
 	list<int> *l = b.inOrder();;
+	cout << "Printing my inOrder" << endl;
 	prnt(*l);
+	
+	b.remove(8);
+	cout << "Removed 8" << endl;
+	cout << "Iterate through my bst" << endl;
 	for(bst<int>::const_iterator it = b.begin(); it != b.end(); ++it){
 		cout << *it << endl;
 	}

@@ -128,15 +128,15 @@ class bst{
 			} else 
 				return search(x, root);
 		}
-		bstNode * findMin() const{
+		Obj & findMin() const{
 			assert (!isEmpty());
 			return findMin(root);
 		}
-		bstNode * findMax() const{
+		Obj & findMax() const{
 			assert (!isEmpty());
-		return findMax(root);
+			return findMax(root);
 		}
-		list<Obj> * inOrder() {
+		list<Obj> * inOrder() const{
 			elements->clear();
 			return inOrder(root);
 		}
@@ -154,6 +154,9 @@ class bst{
 		}
 		int fullNodes() const{
 			return fullNodes(root);
+		}
+		int size() const{
+			return inOrder()->size();
 		}
 	private:
 		// SJS added elements to bst instead of to the iterator
@@ -180,7 +183,7 @@ class bst{
 				return false;
 			}
 		}
-		list<Obj> * inOrder(bstNode *n) {
+		list<Obj> * inOrder(bstNode *n) const{
 			if(n != NULL){
 				inOrder(n->left);
 				elements->push_back(n->data);
@@ -188,19 +191,17 @@ class bst{
 			}
 			return elements;
 		}
-		bstNode * findMin(bstNode *n){
-			if(n->left == NULL){
-				return n;
-			} else {
-				return findMin(n->left);
+		Obj & findMin(bstNode *n) const{
+			if(n->left != NULL){
+				findMin(n->left);
 			}
+			return n->data;
 		}
-		bstNode * findMax(bstNode *n){
-			if(n->right == NULL){
-				return n;
-			} else {
-				return findMax(n->right);
+		Obj & findMax(bstNode *n) const{
+			if(n->right != NULL){
+				findMax(n->right);
 			}
+			return n->data;
 		}
 		void remove(const Obj &x, bstNode *&n){
 			if(n == NULL)
@@ -210,14 +211,14 @@ class bst{
 			} else if(x > n->data){
 				remove(x, n->right);
 			} else if(n->left != NULL && n->right != NULL){
-				n->data = findMin(n->right)->data;
+				n->data = findMin(n->right);
 				remove(n->data, n->right);
 			} else {
 				n = (n->left != NULL) ? n->left : n->right;
 				return;
 			}
 		}
-		int height(bstNode *n){
+		int height(bstNode *n) const{
 			if(n == NULL)
 				return 0;
 			return 1 + max(height(n->left), height(n->right));
