@@ -1,0 +1,103 @@
+Michelle Bergin
+Winter MidTerm
+Data Structures
+
+1) attached to PDF
+
+2) attached to PDF
+
+3) tbd
+
+4) attached to PDF. This I definitly don't know so I submitted 2 different attempts. I don't think either is correct. :( I am sorry to waste your time.
+
+5) b = 13 k mod b
+
+    a) 7, 42, 25, 73, 14, 38, 8, 22, 34, 11
+    7 % 13 = 7, 42 % 13 = 3, 25 % 13 = 12, 73 % 13 = 8, 14 % 13 = 1, 38 % 13 = 12, 8 % 13 = 8, 22 % 13 = 9, 34 % 13 = 8, 11 % 13 = 13.
+
+
+    ** My dumb hash table **
+    ## Uses lazy deletion with lazy bit, 0 = used or unused but not deleted, 1 = used but deleted. ##
+
+    0 |	    38 | 0
+    1 |	    14 | 0
+    2 |	    11 | 0
+    3 |	    42 | 0
+    4 |	       | 0
+    5 |	       | 0
+    6 |	       | 0
+    7 |	    7  | 0
+    8 |	    73 | 0
+    9 |	    8  | 0
+    10|	    22 | 0
+    11|	    34 | 0
+    12|	    25 | 0
+
+b) Deleting 73 and 22
+
+    ** My dumb hash table **
+    ## Uses lazy deletion with lazy bit, 0 = never used, 1 = used but deleted. ##
+
+    0 |     38 | 0
+    1 |     14 | 0
+    2 |     11 | 0
+    3 |     42 | 0
+    4 |        | 0
+    5 |        | 0
+    6 |        | 0
+    7 |     7  | 0
+    8 |        | 1
+    9 |     8  | 0
+    10|        | 1
+    11|     34 | 0
+    12|     25 | 0
+
+    Explanation: If doing a search or insert. It looks for an empty space and then checks the lazy bit. If it's searching and the bit is set to 0 it knows that the item does not exist. If it is inserting and sees that it is empty then it places regardless.
+
+        For example if I wanted to insert 73 again, it would be inserted into position 8 because it is empty.
+
+        For example if I DID NOT re enter 73 (it is still delted) and I search for 8 I would first search in position 8, I would find it empty but the lazy bit is 1, so I would continue to 9 and find number 8.
+
+6) 
+               0  1  2  3  4  5   6  7  8   9  10  11  12
+    theHeap = [−, 3, 5, 6, 7, 20, 8, 2, 9, 12, 15, 30, 17]
+    a)
+	                             3
+							  /     \
+							5         6
+						 /   \       /   \
+					   7      20    8     2
+					 /  \   / \    /
+				   9    12 15 30  17
+
+	b) fix 15
+                                 3
+                              /     \
+                            5         6
+                         /   \       /   \
+                       7      15    8     2
+                     /  \   / \    /
+                   9    12 20 30  17
+       
+	   fix 2
+                                 3
+                              /     \
+                            5         2
+                         /   \       /   \
+                       7      15    8     6
+                     /  \   / \    /
+                   9    12 20 30  17
+
+                                 2
+                              /     \
+                            5         3
+                         /   \       /   \
+                       7      15    8     6
+                     /  \   / \    /
+                   9    12 20 30  17
+
+    c) Insert the elements 15, 20, 45 in that order
+	
+
+
+7)
