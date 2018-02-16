@@ -50,10 +50,10 @@ class set{
 			}
 			return true;
 		}
-		typename list<Obj>::const_iterator begin(){
+		typename bst<Obj>::const_iterator begin(){
 			return b.begin();
 		}
-		typename list<Obj>::const_iterator end(){
+		typename bst<Obj>::const_iterator end(){
 			return b.end();
 		}
 

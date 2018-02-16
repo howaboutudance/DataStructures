@@ -18,61 +18,107 @@ class bst{
 	private:
 		struct bstNode{
 			Obj data;
-			bstNode *left;
+			bstNode *left;	
 			bstNode *right;
 			bstNode(const Obj &d, bstNode *l, bstNode *r)
 			         : data(d), left(l), right(r) { }
 		};
 		bstNode *root;
-
+		
 	public:
+		class const_iterator{
+			protected:
+				typename list<Obj>::const_iterator it;
+
+			public:
+			// SJS no const on the arg since
+			// it alters the elements list in the tree
+				const_iterator(bst &t) {
+					
+					t.elements->clear();
+					t.elements = t.inOrder();
+					it = t.elements->begin();
+				}
+				const_iterator(const list<Obj> *l) {
+					it = l->end();
+				}
+				const Obj & operator*() const{
+					return *it;
+				}
+				
+				const_iterator operator++(int) { // post
+					const_iterator old = *this;
+					it++;
+					return old;
+				}
+				const_iterator operator++() {	// pre
+					it++;
+					return *this;
+				}
+
+				bool operator==(const const_iterator & rhs) const{
+					return it == rhs.it;
+				}
+				bool operator!=(const const_iterator &rhs)const {
+					return it != rhs.it;
+				}
+		};
+
 		bst(){
 			root = NULL;
 		}
-		bool isEmpty(){
+		// SJS no const on the begin iterator since
+		// it alters the elements list in the tree
+		const_iterator begin() {
+			return const_iterator(*this);
+		}
+		const_iterator end() const {
+			return const_iterator(elements);
+		}
+		bool isEmpty() const{
 			return root == NULL;
 		}
 		void insert(const Obj &x){
 			insert(x, root);
 		}
-		bool search(const Obj &x){
+		bool search(const Obj &x) const{
 			if(isEmpty()){
 				return false;
 			} else 
 				return search(x, root);
 		}
-		bstNode * findMin(){
+		Obj & findMin() const{
 			assert (!isEmpty());
 			return findMin(root);
 		}
-		bstNode * findMax(){
+		Obj & findMax() const{
 			assert (!isEmpty());
-		return findMax(root);
+			return findMax(root);
 		}
-		list<Obj> inOrder(){
-			list<Obj> lst;
-			return inOrder(root, lst);
+		list<Obj> * inOrder() const{
+			elements->clear();
+			return inOrder(root);
 		}
 		void remove(const Obj &x){
 			remove(x, root);
 		}
-		int height(){
+		int height() const{
 			return height(root);
 		}
-		int numNodes(){
+		int numNodes() const{
 			return numNodes(root);
 		}
-		int leaves(){
+		int leaves() const{
 			return leaves(root);
 		}
-		int fullNodes(){
+		int fullNodes() const{
 			return fullNodes(root);
 		}
-		//Set set_union(Set & vals)
-		//Set set_inter(Set & vals)
-		//bool subset(Set & vals) const
-		//bool operator==(Set & vals)
+		int size() const{
+			return inOrder()->size();
+		}
 	private:
+		list<Obj> * elements = new list<Obj>{};	//elements list for inorder traverse
 		void insert(const Obj &x, bstNode *&n){
 			if(n == NULL){
 				n = new bstNode(x, NULL, NULL);
@@ -83,7 +129,7 @@ class bst{
 			} else
 				;
 		}
-		bool search(const Obj &x, bstNode *n){
+		bool search(const Obj &x, bstNode *n) const{
 			if(x == n->data){
 				return true;
 			} 
@@ -95,27 +141,29 @@ class bst{
 				return false;
 			}
 		}
-		list<Obj> inOrder(bstNode *n, list<Obj> &lst){
+		list<Obj> * inOrder(bstNode *n) const{
 			if(n != NULL){
-				inOrder(n->left, lst);
-				lst.push_back(n->data);
-				inOrder(n->right, lst);
+				inOrder(n->left);
+				elements->push_back(n->data);
+				inOrder(n->right);
 			}
-			return lst;
+			return elements;
 		}
-		bstNode * findMin(bstNode *n){
-			if(n->left == NULL){
-				return n;
-			} else {
+		Obj & findMin(bstNode *n) const{
+			if(n->left != NULL)
 				return findMin(n->left);
-			}
+			// SJS need the return for both the if and the else
+			// SJS otherwise you return to the point of the
+			// SJS recursion and return n->data from the point
+			// SJS of recursion!
+			return n->data;
 		}
-		bstNode * findMax(bstNode *n){
-			if(n->right == NULL){
-				return n;
-			} else {
+		Obj & findMax(bstNode *n) const{
+			if(n->right != NULL){
+			// SJS same comment on the return findMax recusion
 				return findMax(n->right);
 			}
+			return n->data;
 		}
 		void remove(const Obj &x, bstNode *&n){
 			if(n == NULL)
@@ -125,19 +173,19 @@ class bst{
 			} else if(x > n->data){
 				remove(x, n->right);
 			} else if(n->left != NULL && n->right != NULL){
-				n->data = findMin(n->right)->data;
+				n->data = findMin(n->right);
 				remove(n->data, n->right);
 			} else {
 				n = (n->left != NULL) ? n->left : n->right;
 				return;
 			}
 		}
-		int height(bstNode *n){
+		int height(bstNode *n) const{
 			if(n == NULL)
 				return 0;
 			return 1 + max(height(n->left), height(n->right));
 		}
-		int numNodes(bstNode *n){
+		int numNodes(bstNode *n) const{
 			int count = 1;
 			if(n->left != NULL){
 				count += numNodes(n->left);
@@ -147,7 +195,7 @@ class bst{
 			}
 			return count;
 		}
-		int leaves(bstNode *n){
+		int leaves(bstNode *n) const {
 			if(n == NULL)
 				return 0;
 			if(n->left == NULL && n->right == NULL)
@@ -155,7 +203,7 @@ class bst{
 			else
 				return leaves(n->left) + leaves(n->right);
 		}
-		int fullNodes(bstNode *n){
+		int fullNodes(bstNode *n)const {
 			if(n == NULL)
 				return 0;
 			if(n->left != NULL && n->right != NULL)
