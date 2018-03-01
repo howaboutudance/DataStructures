@@ -19,6 +19,7 @@ private:
 		node data;
 		ExprNode * left;
 		ExprNode * right;
+		
 	
 		ExprNode(int val) {
 			data.variable = val;
@@ -34,6 +35,42 @@ private:
 		}
 	};
 
+	int eval(ExprNode *exp) {
+		if (exp->data.isOperator){
+			return apply(exp->data.oper, eval(exp->left), eval(exp->right));
+		} else {
+			 return exp->data.variable;
+		}
+	}
+
+	void prnt(ExprNode *r){
+		if(r != nullptr){
+			if(r->data.isOperator){
+				cout << r->data.oper;
+			} else {
+				cout << r->data.variable;
+			}
+			prnt(r->left); prnt(r->right);
+			if(r->data.isOperator){
+				cout << r->data.oper;
+			} else {
+				cout << r->data.variable;
+			}
+		}	
+	}
+
+	int apply(char oper, int a, int b){
+		switch (oper) {
+			case '+': 
+				return a + b;
+			case '-':
+				return a - b;
+			case '*':
+				return a * b;
+			case '/':
+				return a / b;
+		}
+	}
 
 	ExprNode *root;
 
@@ -49,21 +86,12 @@ public:
 	ExTree (char val, ExTree & left, ExTree & right) {
 		root = new ExprNode(val, left.root, right.root);
 	}
-    void insert (string s){
-        /*stack<ExprNode> expStack;
-        for(auto it = s.begin(); it < s.end(); it++){
-            if(((int)*it >= 40 && (int)*it <= 47) || (int)*it == 61 || (int)*it == 94){
-                ExprNode right = expStack.pop();
-                ExprNode left = expStack.pop();
-                ExprNode tmp = new ExprNode(*it,left, right);
-                expStack.push(tmp);
-            } else {
-                ExprNode *tmp;
-                *tmp->data = *it;
-                expStack.push(tmp);
-            }
-        }*/
-
-    }
+	int eval(){
+		eval(root);
+	}
+	void prnt(){
+		prnt(root);
+		cout << endl;
+	}
 };
 #endif
