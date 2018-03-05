@@ -41,7 +41,14 @@ Michelle Bergin
 
 4.26 Write the functions to perform the double rotation without the inefficiency of doing two single rotations.
 
-	help
+z's left get's 
+
+void doubleRotate(AvlNode *& k1){
+	AvlNode k1
+	AvlNode k2
+	AvlNode k3
+	AvlNode k4
+}
 
 4.27 Show the result of accessing the keys 3, 9, 1, 5 in order in the splay tree in Figure 4.76.
 
@@ -137,42 +144,41 @@ What is the running time of your routines?
 |  a  |
 +=====+
 
-        int numNodes(){
-            return numNodes(root);
-        }
-        int numNodes(bstNode *n){
-            int count = 1;
-            if(n->left != NULL){
-                count += numNodes(n->left);
-            }
-            if(n->right != NULL){
-                count += numNodes(n->right);
-            }
-            return count;
-        }
+int numOfNodes(){
+	return numOfNodes(T->root);
+}
+int numOfNodes(Node &rtNode){
+	if (rtNode == null){
+		return;
+	}
+	else{
+		return numOfNodes(rtNode->left) + 1;
+		return numOfNodes(rtNode->right) + 1;
+	}
+}
 
 +=====+
 |  b  |
 +=====+
 
-        }
-        int leaves(){
-            return leaves(root);
-        }
-        int leaves(bstNode *n){
-            if(n == NULL)
-                return 0;
-            if(n->left == NULL && n->right == NULL)
-                return 1;
-            else
-                return leaves(n->left) + leaves(n->right);
-        }
+int numOfLeaves(){
+	return numOfLeaves(T->root);
+}
+int numOfLeaves(Node &rtNode){
+	if (rtNode == null){
+		return 1;
+	}
+	else{
+		numOfLeaves(rtNode->left);
+		numOfLeaves(rtNode->right);
+	}
+}
 
 +=====+
 |  c  |
 +=====+
 
-	help
+
 
 
 4.43 
@@ -184,20 +190,3 @@ Each Node has a link to it's parent. They each have their data. They each have a
 4.45
 Two binary trees are similar if they are both empty or both nonempty and have similar left and right subtrees. Write a function to decide whether two binary trees are similar. What is the running time of your function?
 
-Something like this?
-
- bool same(bst &t){
- 	return same(t->root,root);
- }
- bool same(bstNode *i, bstNode *o){
- 	if(i == NULL || o == NULL)
-		;
-	if(i->data != o->data)
-		return false;
-	else {
-		same(i->left, o->left);
-		same(i->right, o->right);
-	}
-	return true;
-	
- }
