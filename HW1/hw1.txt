@@ -41,6 +41,9 @@ Michelle Bergin
 
 4.26 Write the functions to perform the double rotation without the inefficiency of doing two single rotations.
 
+<<<<<<< HEAD
+help
+=======
 z's left get's 
 
 void doubleRotate(AvlNode *& k1){
@@ -49,6 +52,7 @@ void doubleRotate(AvlNode *& k1){
 	AvlNode k3
 	AvlNode k4
 }
+>>>>>>> 61b25a3440f60f49f1c761f9b7bff25b51efddc5
 
 4.27 Show the result of accessing the keys 3, 9, 1, 5 in order in the splay tree in Figure 4.76.
 
@@ -144,6 +148,18 @@ What is the running time of your routines?
 |  a  |
 +=====+
 
+<<<<<<< HEAD
+int numNodes(){
+	return numNodes(root);
+}
+int numNodes(bstNode *n){
+	int count = 1;
+	if(n->left != NULL){
+		count += numNodes(n->left);
+	}
+	if(n->right != NULL){
+		count += numNodes(n->right);
+=======
 int numOfNodes(){
 	return numOfNodes(T->root);
 }
@@ -154,6 +170,7 @@ int numOfNodes(Node &rtNode){
 	else{
 		return numOfNodes(rtNode->left) + 1;
 		return numOfNodes(rtNode->right) + 1;
+>>>>>>> 61b25a3440f60f49f1c761f9b7bff25b51efddc5
 	}
 }
 
@@ -161,6 +178,18 @@ int numOfNodes(Node &rtNode){
 |  b  |
 +=====+
 
+<<<<<<< HEAD
+int leaves(){
+	return leaves(root);
+}
+int leaves(bstNode *n){
+	if(n == NULL)
+		return 0;
+	if(n->left == NULL && n->right == NULL)
+		return 1;
+	else
+		return leaves(n->left) + leaves(n->right);
+=======
 int numOfLeaves(){
 	return numOfLeaves(T->root);
 }
@@ -172,13 +201,29 @@ int numOfLeaves(Node &rtNode){
 		numOfLeaves(rtNode->left);
 		numOfLeaves(rtNode->right);
 	}
+>>>>>>> 61b25a3440f60f49f1c761f9b7bff25b51efddc5
 }
 
 +=====+
 |  c  |
 +=====+
 
+<<<<<<< HEAD
+Not working:
 
+int fullNodes(){
+	return fullNodes(root);
+}
+int fullNodes(bstNode *n){
+	if(n == NULL)
+		return 0;
+	if(n->left != NULL && n->right != NULL)
+		return 1;
+	return fullNodes(n->left) + fullNodes(n->right);
+}
+=======
+
+>>>>>>> 61b25a3440f60f49f1c761f9b7bff25b51efddc5
 
 
 4.43 
@@ -190,3 +235,25 @@ Each Node has a link to it's parent. They each have their data. They each have a
 4.45
 Two binary trees are similar if they are both empty or both nonempty and have similar left and right subtrees. Write a function to decide whether two binary trees are similar. What is the running time of your function?
 
+<<<<<<< HEAD
+Something like this?
+
+		bool isEqual(bst *T){
+            return isEqual(T->root, root);
+        }
+        bool isEqual(bstNode *tn, bstNode *n){
+            if(tn->data != n->data)
+                return false;
+            if((tn->left != NULL && n->left != NULL) && (tn->right != NULL && n->right != NULL)){
+                isEqual(tn->left, n->left);
+                isEqual(tn->right, n->right);
+            } else if(tn->left != NULL && n->left != NULL){
+                isEqual(tn->left, n->left);
+            } else if (tn->right !=NULL && n->right != NULL) {
+                isEqual(tn->right, n->right);
+            }
+        return true;
+        }
+ 
+=======
+>>>>>>> 61b25a3440f60f49f1c761f9b7bff25b51efddc5
