@@ -14,7 +14,7 @@ int main() {
 	h1.insert(e2);
 	h1.insert(e3);
 
-/*	if (h1.contains(e1))
+	if (h1.contains(e1))
 		std::cout << "E1 is in table" << std::endl;
 	else
 		std::cout << "E1 is not in table" << std::endl;
@@ -28,5 +28,5 @@ int main() {
 		std::cout << "E1 is in table" << std::endl;
 	else
 		std::cout << "E1 is not in table" << std::endl;
-*/
+
 }

@@ -7,15 +7,13 @@ class Employee{
         const string & getName() const{ 
             return name;
         }
-
         bool operator==(const Employee & rhs) const{
             return getName() == rhs.getName();
         }
         bool operator!=(const Employee & rhs) const{
             return !(*this == rhs);
-        }
-        
-        int hash(){
+        } 
+        int hash() const{
             return hash(this->getName());
         }
 

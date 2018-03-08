@@ -12,18 +12,32 @@ class HashTable{
                 theLists[i] = *new list<HashedObj>();
             }
         }
-        //bool contains(const HashedObj & x) const{
-            
-        //}
+        bool contains(const HashedObj & x) const{
+            int loc = x.hash() % theLists.size();
+            for(typename list<HashedObj>::const_iterator it = theLists[loc].begin(); it != theLists[loc].end(); it++){
+                if(x == *it){
+                    return true;
+                }
+            }
+            return false;    
+        }
         void makeEmpty(){
             for(int i = 0; i < theLists.size(); i++){
                 theLists[i].clear();
             }
         }
         void insert(const HashedObj & x){
-            theLists[hash(x) % theLists.size()].push_back(x);
+            theLists[x.hash() % theLists.size()].push_back(x);
         }
-        //void remove(const HashedObj & x);
+        void remove(const HashedObj & x){
+            int loc = x.hash() % theLists.size();
+            for(typename list<HashedObj>::const_iterator it = theLists[loc].begin(); it != theLists[loc].end(); it++){
+                if(x == *it){
+                    theLists[loc].erase(it);
+                    break;
+                }
+            }
+        }
 
     private:
         vector<list<HashedObj>> theLists;
