@@ -1,42 +1,60 @@
-#include <iostream>
-#include <vector>
-using namespace std;
-
-void prnt(vector<int> &v){
-    for(int i = 0; i < vec.size(); i++){
-        cout << vec[i] << ", ";
-    }
-    cout << endl;
-}
-
-void merge(vector<int> &v, int l, int m, int r){
-    if(!(m <= 1)){
-        for(int i = 0; i <= m; i++){
-            cout << i << endl;
-            if(v[l + i] > v[r - i]){
-                int tmp = v[l + i];
-                v[l + i] = v[r - i];
-                v[r - i] = tmp;
-            }
+#include <stdio.h>
+void merge(int arr[], int l, int m, int r){
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 =  r - m;
+                 
+    int L[n1], R[n2];
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1+ j];
+    i = 0; 
+    j = 0; 
+    k = l; 
+    while (i < n1 && j < n2){
+        if (L[i] <= R[j]){
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
         }
+        k++;
+    }
+    while (i < n1){
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2){
+        arr[k] = R[j];
+        j++;
+        k++;
+    }    
+}
+void mergeSort(int arr[], int l, int r){
+    if (l < r){
+        int m = l+(r-l)/2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m+1, r);
+        merge(arr, l, m, r);
     }
 }
-void mergeSort(vector<int> &v, int l, int r){
-    if((r - l) > 1){
-        int m = (r - l) / 2;
-        cout << "Got here" << endl;
-        merge(v, l, m, r);
-        mergeSort(v, l, m);
-        mergeSort(v, m + 1, r);
+void printArray(int A[], int size){
+    int i;
+    for (i=0; i < size; i++){
+        printf("%d ", A[i]);
     }
+    printf("\n");
 }
-
 int main(){
-    vector<int> vec;
-    vec.push_back(4); vec.push_back(13); vec.push_back(1); vec.push_back(555); vec.push_back(42); vec.push_back(2); vec.push_back(55); vec.push_back(30); vec.push_back(18); vec.push_back(31); vec.push_back(9);
-    prnt(vec);
-    cout << "Merging... " << endl;
-    mergeSort(vec, 0, vec.size() - 1);
-    prnt(vec);
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int arr_size = sizeof(arr)/sizeof(arr[0]);
+    printf("Given array is \n");
+    printArray(arr, arr_size);
+    mergeSort(arr, 0, arr_size - 1);
+    printf("\nSorted array is \n");
+    printArray(arr, arr_size);
     return 0;
 }
