@@ -1,0 +1,20 @@
+each spot needs to know if it is a pathway or edge or end
+
+for int i 
+    for int j
+        if j is 0 or (j.length - 1)
+            make edge
+        if i is 0
+            make edge
+        elif i is (i.length - 1)
+            make end
+        else
+            make 0 (false)
+
+
+while not end
+    random direction
+    while random direction is edge
+        choose another random direction
+    make spot pathway
+    
