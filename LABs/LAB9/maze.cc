@@ -26,6 +26,7 @@ int main(){
     cout << "The Maze" << endl;
     
     solveMaze solve(maze);
+    solve.prnt();
     solve.aPath();
 
     return 0;

@@ -27,18 +27,87 @@ void solveMaze::prnt(vector<vector<string> > & maze){
         cout << endl;
     }
 }
+
 void solveMaze::aPath(){
     vector<int> xy; xy = start(); 
     vector<vector<string> > newMaze;
     newMaze = cpy(originalMaze);
-    startX = xy[0];
-    startY = xy[1];
+    solveMaze one(newMaze);
+    vector<vector<int> > paths;
+    paths.push_back(xy);
+    int startX = xy[0];
+    int startY = xy[1];
+    string end = "_";
     while(end != "E"){
-        
+
+        // NORTH
+        if(isSafe(startX, startY - 1) && isBlocked(startX, startY - 1, one.originalMaze)){
+            cout << " north ";
+            startY -= 1;
+            if(one.originalMaze[startX][startY] != "E"){
+                one.originalMaze[startX][startY] = "\033[31m█\033[0m";
+                vector<int> tmp = {startX, startY};
+                paths.push_back(tmp);
+            } else {
+                end = "E";
+            }
+        }
+
+        // EAST
+        else if(isSafe(startX + 1, startY) && isBlocked(startX + 1, startY, one.originalMaze)){
+            cout << " east ";
+            startX += 1;
+            if(one.originalMaze[startX][startY] != "E"){
+                one.originalMaze[startX][startY] = "\033[31m█\033[0m";
+                vector<int> tmp = {startX, startY};
+                paths.push_back(tmp);
+            } else {
+                end = "E";
+            }
+        }
+
+        // SOUTH
+        else if(isSafe(startX, startY + 1) && isBlocked(startX, startY + 1, one.originalMaze)){
+            cout << " south ";
+            startY += 1;
+            if(one.originalMaze[startX][startY] != "E"){
+                one.originalMaze[startX][startY] = "\033[31m█\033[0m";
+                vector<int> tmp = {startX, startY};
+                paths.push_back(tmp);
+            } else {
+                end = "E";
+            }
+        }
+
+        // WEST
+        else if(isSafe(startX - 1, startY) && isBlocked(startX - 1, startY, one.originalMaze)){
+            cout << " west ";
+            startX -= 1;
+            if(one.originalMaze[startX][startY] != "E"){
+                one.originalMaze[startX][startY] = "\033[31m█\033[0m";
+                vector<int> tmp = {startX, startY};
+                paths.push_back(tmp);
+            } else {
+                end = "E";
+            }
+        } else {
+            one.originalMaze[startX][startY] = "\033[31m█\033[0m";
+            vector<int> tmp = paths.back();
+            startX = tmp[0];
+            startY = tmp[1];
+            paths.pop_back();
+        }
+        one.prnt();
     }
 }
-//void prntAll() const{
-//}
+void solveMaze::prntAll(){
+    if(!allPaths.empty()){
+        for(int i = 0; i < allPaths.size(); i++){
+            allPaths[i].prnt();
+            cout << endl;
+        }
+    }
+}
 vector<vector<string> > solveMaze::cpy(vector<vector<string> > & maze){
     vector<vector<string> > newMaze(maze.size());
     for(int i = 0; i < maze.size(); i++){
@@ -53,6 +122,12 @@ void solveMaze::create(vector<vector<string> > & maze){
     // actually create a map. For now I just pass it through.
     originalMaze = cpy(maze);
 }
+bool solveMaze::isSafe(int x, int y){
+    if(x < 0 || y < 0 || x >= originalMaze.size() || y >= originalMaze[0].size()){
+        return false;
+    }
+    return true;
+}
 vector<int> solveMaze::start(){
     vector<int> tmp;
     for(int i = 0; i < originalMaze.size(); i++){
@@ -65,6 +140,9 @@ vector<int> solveMaze::start(){
     }
     return tmp;
 }
-bool isBlocked(int x, int y, vector<vector<string> > &maze){
-    
+bool solveMaze::isBlocked(int x, int y, vector<vector<string> > &maze){
+    if(maze[x][y] == " "){
+        return true;
+    }
+    return false;
 }
